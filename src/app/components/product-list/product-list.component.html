@@ -1,0 +1,15 @@
+<app-product-filter></app-product-filter>
+<div class="container">
+  <div class="product-card" *ngFor="let product of products">
+    <h1 (click)="editProduct()">{{ product.name | uppercase }}</h1>
+    <p class="b">{{ product.price }}</p>
+    
+    <ng-container *ngIf="product.availability; else notAvailable">
+      <p> Product available! <i class="fas fa-thumbs-up"></i> </p>  
+      <p><em>We still got: <span class="b">{{ product.quantity }}</span> in stock!</em></p>
+    </ng-container>
+    <ng-template #notAvailable>
+      <p>Bad luck friend! <i class="fas fa-thumbs-down"></i><br> Maybe next time!</p>
+    </ng-template>
+  </div>
+</div>

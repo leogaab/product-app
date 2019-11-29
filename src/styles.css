@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-family: 'Gupter', serif;
+  box-sizing: border-box;
+}
+
+body, html {
+  background: #ecf0f1;
+}
