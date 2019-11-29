@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TargetLocator } from 'selenium-webdriver';
-import { Product } from '../product-list.service';
 
 @Component({
   selector: 'app-product-filter',
@@ -9,8 +7,7 @@ import { Product } from '../product-list.service';
 })
 export class ProductFilterComponent implements OnInit {
 
-  test: [];
-  state = {name: '', availability: true};
+  displayFilters = false;
 
   constructor() { }
 
@@ -22,5 +19,9 @@ export class ProductFilterComponent implements OnInit {
     // this.test.filter((x: Product) => x.name.includes(state.name) && x.availability == state.availability);
   }
 
+  openFilters() {
+    console.log('clicked');
+    this.displayFilters = !this.displayFilters;
+  }
 
 }

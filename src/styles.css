@@ -13,3 +13,12 @@
 body, html {
   background: #ecf0f1;
 }
+
+.btn {
+  padding: 10px;
+  border-radius: 20px;
+  margin: 1em 0;
+  background: none;
+  font-weight: bold;
+  transition: all;
+}
