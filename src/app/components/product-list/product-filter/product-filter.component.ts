@@ -10,7 +10,7 @@ import { Product } from '../product-list.service';
 export class ProductFilterComponent implements OnInit {
 
   test: [];
-  state = {name:'', availability: true};
+  state = {name: '', availability: true};
 
   constructor() { }
 
@@ -18,8 +18,8 @@ export class ProductFilterComponent implements OnInit {
   }
 
   filterProducts(value: string) {
-    console.log(event.target.value);
-    this.test.filter((x: Product) => x.name.includes(state.name) && x.availability == state.availability);
+    // console.log(event.target.value);
+    // this.test.filter((x: Product) => x.name.includes(state.name) && x.availability == state.availability);
   }
 
 

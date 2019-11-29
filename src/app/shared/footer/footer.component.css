@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #2c3e50;
+  padding: 1.4em;
+  margin-top: 1em;
+}
+
+.footer i:last-child {
+  margin-left: 5px;
+}
