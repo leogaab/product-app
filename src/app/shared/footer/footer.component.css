@@ -11,3 +11,7 @@
 .footer i:last-child {
   margin-left: 5px;
 }
+
+strong:hover {
+  color: #1abc9c;
+}
