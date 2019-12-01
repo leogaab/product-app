@@ -66,23 +66,12 @@
   padding: 20px;
 }
 
-.btn-success {
-  background: #1abc9c;
-  color: #fff;
-  margin-left: 10px;
-}
-
 .btn-cancel {
   color: #c0392b;
+  margin-right: 10px;
 }
 .btn-reset {
   color: #e67e22;
-}
-
-.btn-success:hover {
-  background: #18aa8d;
-  color: #fff;
-  transition: all 0.2s ease-in-out;
 }
 
 .btn-cancel:hover {

@@ -9,7 +9,12 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductEditComponent } from './components/product-list/product-edit/product-edit.component';
 import { ProductComponent } from './components/product-list/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { ProductFilterComponent } from './components/product-list/product-filter/product-filter.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './shared/in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +28,10 @@ import { ProductFilterComponent } from './components/product-list/product-filter
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 500}),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

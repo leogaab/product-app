@@ -1,26 +1,24 @@
-<div class="container">
-  <div class="product-item" *ngFor="let product of products">
-    <h1>{{ product.name | uppercase }}</h1>
-    <p class="b">{{ product.price }}</p>
-    <div>
-      <label>Update product name <i class="fas fa-tags"></i>:
-        <input type="text" placeholder="name"/>
-      </label>
+<div class="container" *ngIf="product">
+  <div class="product-item" [formGroup]="productForm">
+    <h1>{{ productName.value | uppercase }}</h1>
+    <p class="b">{{ price.value }}</p>
+    <div class="tag">
+      <label>Update product name <i class="fas fa-tags"></i>:</label>
+        <input type="text" formControlName="name" placeholder="Enter the product name"/>
     </div>
-    <div>
-      <label>Update product price <i class="fas fa-dollar-sign"></i>:
-        <input type="text" placeholder="price"/>
-      </label>
+    <div class="price">
+      <label>Update product price <i class="fas fa-dollar-sign"></i>:</label>
+        <input type="text" formControlName="price" placeholder="Inform the desired price"/>
     </div>
-    <div>
-      <label>Update product quantity <i class="fas fa-layer-group"></i>:
-        <input type="text" placeholder="quantity"/>
-      </label>
+    <div class="quantity">
+      <label>Update product quantity <i class="fas fa-layer-group"></i>:</label>
+        <input type="text" formControlName="quantity" placeholder="Inform the desired quantity"/>
     </div>
-    <div>
-      <label>Update product availability <i class="fas fa-clipboard-check"></i>:
-        <label for="true">True</label>  <input type="radio" name="radio" id="true">
-        <label for="false">False</label>  <input type="radio" name="radio" id="false">
-      </label>
+    <div class="available">
+      <label>Update product availability <i class="fas fa-clipboard-check"></i>:</label>
+        <label for="true">{{productForm.get('availability').value}}
+          <input type="checkbox" formControlName="availability">
+        </label>
     </div>
+    <button class="btn btn-success" (click)="saveChanges()">Save changes</button>
 </div>

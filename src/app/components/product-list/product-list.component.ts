@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductListService, Product } from './product-list.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,8 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
   constructor(
-    private productListService: ProductListService
+    private productListService: ProductListService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -22,7 +24,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  editProduct() {
-    console.log('Product clicked!');
+  editProduct(id: string) {
+    this.router.navigate([`edit/${id}`] );
   }
 }
