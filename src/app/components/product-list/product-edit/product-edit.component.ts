@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductListService, Product } from '../product-list.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -24,7 +24,8 @@ export class ProductEditComponent implements OnInit {
 
   constructor(
     private productListService: ProductListService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -50,8 +51,13 @@ export class ProductEditComponent implements OnInit {
   saveChanges() {
     console.log('click');
     console.log(this.productForm.value);
-    
+
     this.productListService.updateProduct(this.productId, this.productForm.value);
+    this.router.navigate(['product-list']);
+  }
+
+  goBack() {
+    this.router.navigate(['product-list']);
   }
 
 }

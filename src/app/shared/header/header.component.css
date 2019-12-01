@@ -6,3 +6,14 @@
   padding: 20px;
   margin-bottom: 20px;
 }
+
+ul {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+ul li:first-child {
+  margin-right: 15px;
+}

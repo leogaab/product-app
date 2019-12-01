@@ -47,13 +47,7 @@
   margin: 15px 0;
 }
 
-.tag {}
-
-.price {}
-
-.quantity {}
-
 .available label:last-child {
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin: 15px 0;
 }

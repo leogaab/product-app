@@ -26,11 +26,20 @@ body, html {
 .btn-success {
   background: #1abc9c;
   color: #fff;
-  margin-left: 10px;
 }
 
 .btn-success:hover {
   background: #18aa8d;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-cancel {
+  color: #c0392b;
+}
+
+.btn-cancel:hover {
+  background: #c0392b;
   color: #fff;
   transition: all 0.2s ease-in-out;
 }

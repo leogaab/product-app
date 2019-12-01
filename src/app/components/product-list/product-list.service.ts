@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -24,14 +23,10 @@ export class ProductListService {
       return this.http.get<Product>(`${this.url}/${id}`);
     }
 
-    
-    
-    
     updateProduct(id: string, product): Observable<Product> {
       return this.http.put<Product>(`${this.url}/${id}`, product);
     }
 }
-
 export interface Product {
   quantity: number;
   price: string;
