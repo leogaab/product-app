@@ -1,40 +1,49 @@
 <div class="filter-container">
   <div class="search-bar">
     <button><i class="fas fa-search"></i></button>
-    <input #inputFilter type="text" placeholder="Filter Products..." (keyup)="filterProducts(inputFilter.value)">
-    <button type="button" value="Filters" (click)="openFilters()"> <i class="fas fa-filter"></i> Filter </button>
+    <input type="text" placeholder="Filter Products..." (keyup)="filterSearchBox($event)" [ngModel]="searchText">
+    <button type="button" value="Filters" (click)="openFilters()"><i class="fas fa-filter"></i></button>
+    <ng-container [ngSwitch]="direction">
+      <button *ngSwitchCase="'none'" type="button" (click)="setSortDirection('desc')"><i
+          class="fas fa-sort-alpha-down"></i></button>
+      <button *ngSwitchCase="'asc'" type="button" (click)="setSortDirection('none')"><i
+          class="fas fa-minus-square"></i></button>
+      <button *ngSwitchCase="'desc'" type="button" (click)="setSortDirection('asc')"><i
+          class="fas fa-sort-alpha-up"></i></button>
+    </ng-container>
+
   </div>
   <ng-container *ngIf="displayFilters">
     <div class="filters-container">
       <div class="inputs-container">
         <div class="quantity">
           <h3>Quantity</h3>
-          <input type="number" name="quantity" id="quantity" min="1" max="1000">
+          <input type="number" name="quantity" id="quantity" min="1" max="50000" (keyup)="filterQuantity($event)">
         </div>
 
         <div class="price">
           <h3>Price</h3>
-          <label>Min</label>
-            <input type="text" name="min-price" id="min-price">
-            <span> - </span>
-          <label>Max</label>
-            <input type="text" name="max-price" id="max-price">
+          <label>$ Min</label>
+          <input type="number" name="min-price" id="min-price" (keyup)="filterMin($event)">
+          <span> - </span>
+          <label>$ Max</label>
+          <input type="number" name="max-price" id="max-price" (keyup)="filterMax($event)">
         </div>
 
         <div class="availability">
           <h3>Availability</h3>
           <label>True</label>
-            <input type="checkbox" name="true" id="true">
+          <input type="radio" name="availability" value="1" [ngModel]="available" (change)="filterAvailability($event)">
           <label>False</label>
-            <input type="checkbox" name="false" id="false">
+          <input type="radio" name="availability" value="0" [ngModel]="available" (change)="filterAvailability($event)">
         </div>
       </div>
 
       <div class="btn-container">
-        <button class="btn btn-reset">Reset all filters</button>
+        <button class="btn btn-reset" (click)="resetFilters()">Reset all filters</button>
         <div>
-          <button class="btn btn-cancel" (click)="openFilters()">Cancel</button>
-          <button class="btn btn-success">Apply filters</button>
+          <button class="btn btn-cancel" (click)="cancel()">Cancel</button>
+          <button class="btn btn-success" (click)="applyFilter()">Apply filters</button>
         </div>
       </div>
     </div>
