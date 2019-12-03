@@ -16,8 +16,6 @@ export class ProductListService {
     ) { }
 
     getProductList(): Observable<Product[]> {
-      console.log(this.http.get<Product[]>(this.url));
-
       return this.http.get<Product[]>(this.url);
     }
 

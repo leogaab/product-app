@@ -31,6 +31,16 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {}
 
+  get productName() {
+    return this.productForm.get('name');
+  }
+  get price() {
+    return this.productForm.get('price');
+  }
+  get quantity() {
+    return this.productForm.get('quantity');
+  }
+
   saveChanges() {
     // console.log(this.productForm.value);
 
