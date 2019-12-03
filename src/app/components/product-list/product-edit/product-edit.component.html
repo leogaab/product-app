@@ -1,25 +1,26 @@
 <div class="container" *ngIf="product">
   <div class="product-item" [formGroup]="productForm">
     <h1>{{ productName.value | uppercase }}</h1>
-    <p class="b">{{ price.value }}</p>
+    <p class="b">{{ price.value | currency }}</p>
     <div class="tag">
       <label>Update product name <i class="fas fa-tags"></i>:</label>
-        <input type="text" formControlName="name" placeholder="Enter the product name"/>
+      <input type="text" formControlName="name" placeholder="Enter the product name" />
     </div>
     <div class="price">
       <label>Update product price <i class="fas fa-dollar-sign"></i>:</label>
-        <input type="text" formControlName="price" placeholder="Inform the desired price"/>
+      <input type="text" formControlName="price" placeholder="Inform the desired price" />
     </div>
     <div class="quantity">
       <label>Update product quantity <i class="fas fa-layer-group"></i>:</label>
-        <input type="text" formControlName="quantity" placeholder="Inform the desired quantity"/>
+      <input type="text" formControlName="quantity" placeholder="Inform the desired quantity" />
     </div>
     <div class="available">
       <label>Update product availability <i class="fas fa-clipboard-check"></i>:</label>
-        <label for="true">{{productForm.get('availability').value}}
-          <input type="checkbox" formControlName="availability">
-        </label>
+      <label for="true"> {{productForm.get('availability').value}}
+        <input type="checkbox" formControlName="availability">
+      </label>
     </div>
     <button class="btn btn-success" (click)="saveChanges()">Save changes</button>
     <button class="btn btn-cancel" (click)="goBack()">Go back</button>
+  </div>
 </div>

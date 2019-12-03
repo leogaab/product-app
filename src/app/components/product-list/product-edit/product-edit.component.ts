@@ -31,6 +31,8 @@ export class ProductEditComponent implements OnInit {
   ngOnInit() {
      this.productId = this.route.snapshot.paramMap.get('id');
 
+     this.productForm.controls.id.setValue(this.productId);
+
      this.productListService.getProduct(this.productId).subscribe(
       (res) => {
         this.productForm.patchValue(res);
@@ -49,11 +51,8 @@ export class ProductEditComponent implements OnInit {
   }
 
   saveChanges() {
-    console.log('click');
-    console.log(this.productForm.value);
-
-    this.productListService.updateProduct(this.productId, this.productForm.value);
-    this.router.navigate(['product-list']);
+    this.productListService.updateProduct(this.productForm.value)
+    .subscribe( res => this.router.navigate(['product-list']) );
   }
 
   goBack() {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ProductListService {
 
   // url = 'https://demo0928420.mockable.io/products/list';
-  url = 'api/products';
+  private url = 'api/products';
   items = [];
 
   constructor(
@@ -16,6 +16,8 @@ export class ProductListService {
     ) { }
 
     getProductList(): Observable<Product[]> {
+      console.log(this.http.get<Product[]>(this.url));
+
       return this.http.get<Product[]>(this.url);
     }
 
@@ -23,8 +25,12 @@ export class ProductListService {
       return this.http.get<Product>(`${this.url}/${id}`);
     }
 
-    updateProduct(id: string, product): Observable<Product> {
-      return this.http.put<Product>(`${this.url}/${id}`, product);
+    updateProduct(product): Observable<Product> {
+      return this.http.put<Product>(`${this.url}`, product);
+    }
+
+    createProduct(product): Observable<Product> {
+      return this.http.post<Product>(`${this.url}`, product);
     }
 }
 export interface Product {
