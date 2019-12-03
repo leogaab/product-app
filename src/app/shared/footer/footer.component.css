@@ -12,6 +12,11 @@
   margin-left: 5px;
 }
 
-strong:hover {
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
   color: #1abc9c;
 }
