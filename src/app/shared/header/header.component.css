@@ -14,6 +14,17 @@ ul {
   text-transform: uppercase;
 }
 
+ul li,
+i {
+  transition: all 0.3s ease-out;
+}
+
 ul li:first-child {
   margin-right: 15px;
+}
+
+li:hover,
+i:hover {
+  cursor: pointer;
+  color: #1abc9c;
 }
