@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
       price: new FormControl(''),
       quantity: new FormControl(''),
       availability: new FormControl(''),
-      id: new FormControl('')
+      id: new FormControl(this.idGenerator(15))
     }
   );
 
@@ -29,36 +29,27 @@ export class ProductComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-     this.productId = this.route.snapshot.paramMap.get('id');
-
-     this.productListService.getProduct(this.productId).subscribe(
-      (res) => {
-        this.productForm.patchValue(res);
-        this.product = res;
-      });
-  }
-
-  get productName() {
-    return this.productForm.get('name');
-  }
-  get price() {
-    return this.productForm.get('price');
-  }
-  get quantity() {
-    return this.productForm.get('quantity');
-  }
+  ngOnInit() {}
 
   saveChanges() {
-    console.log('click');
-    console.log(this.productForm.value);
+    // console.log(this.productForm.value);
 
-    this.productListService.updateProduct(this.productId, this.productForm.value);
-    this.router.navigate(['product-list']);
+    this.productListService.createProduct(this.productForm.value)
+    .subscribe( res => this.router.navigate(['product-list']) );
   }
 
   goBack() {
     this.router.navigate(['product-list']);
+  }
+
+  private idGenerator(length) {
+    let result = '';
+    const characters = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyzZ0123456789';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 
 }
