@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
+  filteredProducts: Product[] = [];
 
   constructor(
     private productListService: ProductListService,
@@ -21,10 +22,15 @@ export class ProductListComponent implements OnInit {
     this.productListService.getProductList().subscribe(
       res => {
         this.products = res;
+        this.filteredProducts = res;
     });
   }
 
   editProduct(id: string) {
     this.router.navigate([`edit/${id}`] );
+  }
+
+  showFilter(filterList) {
+    this.filteredProducts = filterList;
   }
 }

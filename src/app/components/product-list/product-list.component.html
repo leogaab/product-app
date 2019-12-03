@@ -1,8 +1,8 @@
-<app-product-filter></app-product-filter>
+<app-product-filter [productList]="products" (filteredList)="showFilter($event)" ></app-product-filter>
 <div class="container">
-  <div class="product-card" *ngFor="let product of products">
+  <div class="product-card" *ngFor="let product of filteredProducts">
     <h1 (click)="editProduct(product.id)">{{ product.name | uppercase }}</h1>
-    <p class="b">{{ product.price }}</p>
+    <p class="b">{{ product.price | currency }}</p>
     
     <ng-container *ngIf="product.availability; else notAvailable">
       <p> Product available! <i class="fas fa-thumbs-up"></i> </p>  

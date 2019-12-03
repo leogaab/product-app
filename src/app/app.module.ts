@@ -9,7 +9,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductEditComponent } from './components/product-list/product-edit/product-edit.component';
 import { ProductComponent } from './components/product-list/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { ProductFilterComponent } from './components/product-list/product-filter/product-filter.component';
 
@@ -29,8 +29,9 @@ import { InMemoryDataService } from './shared/in-memory-data.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 500}),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
   providers: [],
